@@ -5,6 +5,7 @@ import warnings
 import dj_database_url
 import dj_email_url
 import sentry_sdk
+from decouple import config
 from django.contrib.messages import constants as messages
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.translation import gettext_lazy as _, pgettext_lazy
@@ -50,10 +51,11 @@ INTERNAL_IPS = get_list(os.environ.get("INTERNAL_IPS", "127.0.0.1"))
 
 DATABASES = {
     "default": dj_database_url.config(
-        default="postgres://saleor:saleor@localhost:5432/saleor", conn_max_age=600
+        default=config('DATABASE_URL',
+                       default='postgres://saleor:saleor@localhost:5432/saleor'),
+        conn_max_age=600
     )
 }
-
 
 TIME_ZONE = "America/Chicago"
 LANGUAGE_CODE = "en"
@@ -182,7 +184,7 @@ TEMPLATES = [
 ]
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = config("SECRET_KEY")
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
