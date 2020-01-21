@@ -23,6 +23,7 @@ Django==2.2.9
 django-appconf==1.0.3
 django-babel==0.6.2
 django-countries==5.5
+django-debug-toolbar==2.1
 django-filter==2.2.0
 django-graphql-jwt==0.2.1
 django-js-asset==1.2.2
@@ -89,7 +90,7 @@ PyJWT==1.7.1
 Pyphen==0.9.5
 python-dateutil==2.8.0
 python-decouple==3.3
-python-magic-bin==0.4.14
+python-magic==0.4.15
 pytz==2019.3
 razorpay==1.2.0
 redis==3.3.11
